@@ -12,13 +12,13 @@ const createActionName = name => `app/${reducerName}/${name}`;
 export const CHANGE_PHRASE = createActionName('CHANGE_PHRASE');
 export const ADD_TAG = createActionName('ADD_TAG');
 export const REMOVE_TAG = createActionName('REMOVE_TAG');
-//to do add changingduration
+export const CHANGE_DURATION = createActionName('CHANGE_DURATION');
 
 // action creators
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 export const addTag = payload => ({payload, type: ADD_TAG});
 export const removeTag = payload => ({payload, type: REMOVE_TAG});
-// to do - add canging duration action creators
+export const changeDuration = playload => ({playload, type: CHANGE_DURATION});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -38,8 +38,12 @@ export default function reducer(statePart = [], action = {}) {
         ...statePart,
         tags: action.payload,
       };
-      // TODO - handle changing duration action types
-    default:
+    case CHANGE_DURATION:
+      //??CO TU ZROBIĆ
+      return {
+        ...statePart,
+        duration: action.payload,
+      };    default:
       return statePart;
   }
 }
