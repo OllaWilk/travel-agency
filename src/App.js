@@ -29,7 +29,7 @@ class App extends React.Component {
 
   constructor(props){
     super(props);
-    // parse trips when App is first created
+    // parse trips when App is first created.
     parseTrips(this.props.trips, this.props.setStates);
   }
 
