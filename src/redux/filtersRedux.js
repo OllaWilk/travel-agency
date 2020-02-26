@@ -18,7 +18,7 @@ export const CHANGE_DURATION = createActionName('CHANGE_DURATION');
 export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 export const addTag = payload => ({payload, type: ADD_TAG});
 export const removeTag = payload => ({payload, type: REMOVE_TAG});
-export const changeDuration = playload => ({playload, type: CHANGE_DURATION});
+export const changeDuration = payload => ({payload, type: CHANGE_DURATION});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -39,11 +39,24 @@ export default function reducer(statePart = [], action = {}) {
         tags: action.payload,
       };
     case CHANGE_DURATION:
-      //??CO TU ZROBIĆ
-      return {
-        ...statePart,
-        duration: action.payload,
-      };    default:
+      if (action.playload.type == 'from') {
+        return {
+          ...statePart,
+          duration: {
+            from: action.payload.value,
+          },
+        };
+      }
+      else {
+        return {
+          ...statePart,
+          duration: {
+            to: action.payload.value,
+          },
+        };
+      }
+
+    default:
       return statePart;
   }
 }
