@@ -39,7 +39,7 @@ export default function reducer(statePart = [], action = {}) {
         tags: action.payload,
       };
     case CHANGE_DURATION:
-      if (action.playload.type == 'from') {
+      if (action.payload.type == 'from') {
         return {
           ...statePart,
           duration: {
