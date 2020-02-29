@@ -24,19 +24,18 @@ export const getFilteredTrips = ({trips, filters}) => {
     output = output.filter(trip => pattern.test(trip.tags));
   }
 
-
-  //Pomocy tu=>
-  /*if (filters.tags) {
-    output = output.filter(trip => {
-      for(let tag of filters.tags) {
-        if(!trip.tags.includes(tag)) return false;
-      }
-      return true;
-    });
-  }*/
+  /*  TUTAJ PODPOWIEDŹ
 
   // TODO - sort by cost descending (most expensive goes first)
-  //Pomocy tu podpowiedź=>
+  output = output.sort(lowPrice, highPrice) => {
+    return //coś?
+  }*/
+
+  if(filters.tags){
+    const pattern = new RegExp(filters.tags, 'i');
+    output = output.sort(trip => pattern.test(trip.tags));
+  }
+
   return output;
 };
 
