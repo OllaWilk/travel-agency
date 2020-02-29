@@ -10,13 +10,27 @@ export const getFilteredTrips = ({trips, filters}) => {
     const pattern = new RegExp(filters.searchPhrase, 'i');
     output = output.filter(trip => pattern.test(trip.name));
   }
-
   // TODO - filter by duration
+  if(filters.duration.from) {
+    output = output.filter(trip => (trip.days >= filters.duration.from));
+  }
 
-  // TODO - filter by tags
+  if (filters.duration.to) {
+    output = output.filter(trip => (trip.days <= filters.duration.to));
+  }
+  // TODO - filter by tags.
+  //Pomocy tu=>
+  if (filters.tags) {
+    output = output.filter(trip => {
+      for(let tag of filters.tags) {
+        if(!trip.tags.includes(tag)) return false;
+      }
+      return true;
+    });
+  }
 
   // TODO - sort by cost descending (most expensive goes first)
-
+  //Pomocy tu podpowiedź=>
   return output;
 };
 

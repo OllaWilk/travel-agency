@@ -43,7 +43,8 @@ export default function reducer(statePart = [], action = {}) {
         return {
           ...statePart,
           duration: {
-            from: action.payload.value,
+            to: statePart.duration.to,
+            from: parseInt(action.payload.value),
           },
         };
       }
@@ -51,7 +52,8 @@ export default function reducer(statePart = [], action = {}) {
         return {
           ...statePart,
           duration: {
-            to: action.payload.value,
+            to: parseInt(action.payload.value),
+            form: statePart.duration.from,
           },
         };
       }
