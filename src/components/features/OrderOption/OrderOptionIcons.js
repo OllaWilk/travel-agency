@@ -6,9 +6,7 @@ import {formatPrice} from '../../../utils/formatPrice';
 import Icon from '../../common/Icon/Icon';
 
 const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
-  <div
-    className={styles.icon}
-  >
+  <div className={styles.icon} >
     {required ? '' : (
       <div
         className={styles.icon}
@@ -20,7 +18,7 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
 
     {values.map(value => (
       <div
-        className={styles.icon} //jak to zapisać? "className równy styles.icon, oraz styles.iconActive – ale tylko jeśli dany element powinien być aktywny,"
+        className={currentValue === value.id ? styles.iconActive : styles.icon }
         value={currentValue}
         key={value.id}
         onClick={() => (setOptionValue(value.id))}
