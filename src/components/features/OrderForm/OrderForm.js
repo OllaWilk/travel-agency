@@ -25,7 +25,7 @@ const OrderForm = ({options, tripCost, setOrderOption}) => {
 
 OrderForm.propTypes = {
   options: PropTypes.object,
-  tripCost: PropTypes.string,
+  tripCost: PropTypes.node,
   setOrderOption: PropTypes.func,
 };
 
