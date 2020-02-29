@@ -4,28 +4,29 @@ import OrderSummary from '../OrderSummary/OrderSummary';
 import PropTypes from 'prop-types';
 import pricing from '../../../data/pricing.json';
 import OrderOption from '../OrderOption/OrderOption';
-//import { parseOptionPrice } from '../../../utils/parseOptionPrice';
 
-const OrderForm = (props) => (
+const OrderForm = ({options, tripCost, setOrderOption}) => {
 
-  <Row>
-    {pricing.map(option =>
-      <Col md={4} key={option.id}>
-        <OrderOption {...option}
-          currentValue={props.options[option.id]}
-        />
+  return (
+    <Row>
+      {pricing.map(option =>
+        <Col md={4} key={option.id}>
+          <OrderOption {...option}
+            currentValue={options[option.id]} setOrderOption={setOrderOption}
+          />
+        </Col>
+      )}
+      <Col xs={12}>
+        <OrderSummary cost={tripCost} options={options} />
       </Col>
-    )}
-    <Col xs={12}>
-      <OrderSummary cost={props.tripCost} options={props.options} />
-    </Col>
-  </Row>
-
-);
+    </Row>
+  );
+};
 
 OrderForm.propTypes = {
   options: PropTypes.object,
   tripCost: PropTypes.string,
+  setOrderOption: PropTypes.func,
 };
 
 export default OrderForm;
