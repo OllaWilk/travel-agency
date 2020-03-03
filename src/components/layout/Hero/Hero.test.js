@@ -8,4 +8,15 @@ describe('Component Hero', () => {  //describe zgrupuje testy. W pierwszym argum
     expect(component).toBeTruthy(); //expect sprawdza czy wyrenderowany oiekt jest prawdziwy
   });
 
+
+  describe('Component Hero', () => {
+    it('should render without crashing', () => {
+      const component = shallow(<Hero titleText='Lorem ipsum' />);
+      expect(component).toBeTruthy();
+    });
+
+    it('should throw error without required props', () => {
+      expect(() => shallow(<Hero />)).toThrow();
+    });
+  });
 });
