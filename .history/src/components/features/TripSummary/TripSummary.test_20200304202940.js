@@ -25,7 +25,7 @@ describe('Component TripSummary', () => {
 
     //spodziewaj się, że link zapisany w stałej będzie równy linkowi adresu '/trip/abc'
     expect(renderedLink).toEqual(`/trip/${expectedId}`);
-    //console.log(component.debug());
+    console.log(component.debug());
   });
 
   /*TESTOWANIE CZY  IMG MA POPRAWNE SRC I ALT*/
