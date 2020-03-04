@@ -17,7 +17,7 @@ describe('Component TripSummary', () => {
     // stała component zapisuje wynik funkcji shallow, która renderuje komponent
     // więcej metod shallow => https://enzymejs.github.io/enzyme/docs/api/shallow.html
 
-    const component = shallow(<TripSummary id={expectedId} />);
+    const component = shallow(<TripSummary tags={[]} id={expectedId} />);
 
     //.find znajduje wyszystkie elementy pasujące do selektora
 
@@ -47,7 +47,7 @@ describe('Component TripSummary', () => {
     const expectedName = 'Ola';
     const expectedCost = '108';
     const expectedDays = 3;
-    const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost} />);
+    const component = shallow(<TripSummary tags={[]} name={expectedName} days={expectedDays} cost={expectedCost} />);
 
     //spodziewaj się, że to powyższe będzie prawdą.
     expect(component).toBeTruthy();
@@ -56,7 +56,7 @@ describe('Component TripSummary', () => {
 
   /*czy jest wywoływany błąd w przypadku braku któregokolwiek z propsów: id, image, name, cost i days. */
   it('should throw error without required props', () => {
-    expect(() => shallow(<TripSummary />)).toThrow();
+    expect(() => shallow(<TripSummary tags={[]} />)).toThrow();
   });
 
   /*TESTOWANIE PROPSA TAGS. czy są w spanach w odpowiedniej kolejności.  przyda się => https://enzymejs.github.io/enzyme/docs/api/ShallowWrapper/at.html*/
@@ -74,7 +74,7 @@ describe('Component TripSummary', () => {
 
   it('shouldn not render tags if props = undefind', () => {
     const expectedTags = [];
-    const component = shallow(<TripSummary tags{...expectedTags} />);
+    const component = shallow(<TripSummary tags={expectedTags} />);
     expect(component.find('.tags').exists()).toEqual(true);
   });
 
