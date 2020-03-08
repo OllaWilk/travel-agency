@@ -155,6 +155,39 @@
       "tripId": "Viet Nam",
       "countryCode": "VNM",
       "id": 11
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": "3",
+      "children": "3",
+      "name": "ola",
+      "contact": "721775786",
+      "start-date": "",
+      "totalCost": "$151,726",
+      "tripName": "5cc1d1015f3c5f5f14384b15",
+      "tripId": "United States of America",
+      "countryCode": "USA",
+      "id": 12
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "hotel",
+      "features": [
+        "all-inclusive",
+        "pool"
+      ],
+      "adults": "3",
+      "children": "3",
+      "name": "ola",
+      "contact": "721775786",
+      "start-date": "",
+      "totalCost": "$157,126",
+      "tripName": "5cc1d1015f3c5f5f14384b15",
+      "tripId": "United States of America",
+      "countryCode": "USA",
+      "id": 13
     }
   ]
 }

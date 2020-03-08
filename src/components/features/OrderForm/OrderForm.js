@@ -42,7 +42,7 @@ const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
 
 const OrderForm = ({options, tripCost, setOrderOption, tripName, tripId, countryCode }) => {
 
-  const isEnabled = options.name.length > 3 && options.contact.length >8;
+  const isEnabled = options.name.length > 2 && options.contact.length >8;
 
   return (
     <Row>
