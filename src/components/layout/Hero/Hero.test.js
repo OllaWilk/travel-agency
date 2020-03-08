@@ -6,7 +6,7 @@ describe('Component Hero', () => {  //describe zgrupuje testy. W pierwszym argum
   it('should render without crashing', () => { //it definiuje pojedynczy test. Opis testu jest w 1 argumencie.
     const component = shallow(<Hero titleText='Lorem ipsum' imageSrc='' />); //w stałej component zapisany jest funkcji shallow
     expect(component).toBeTruthy(); //expect sprawdza czy wyrenderowany oiekt jest prawdziwy
-    console.log(component.debug());
+    //console.log(component.debug());
   });
 
   /*TESTOWANIE BRZEGOWE - jak zachowa się dokument kiedy nie podamy propsa*/

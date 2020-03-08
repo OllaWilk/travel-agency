@@ -135,12 +135,14 @@ for(let type in optionTypes){
 
         it('should render div with .icon', () => {
           const icon = renderedSubcomponent.find('.icon');
-          expect(icon.length).toBe(1);
+          //console.log('::', renderedSubcomponent.debug());
+          expect(icon.length).toBe(3);
         });
 
 
         it('should run setOrderOption function on click', () => {
-          renderedSubcomponent.find('icon').simulate('click');
+          console.log(':::', renderedSubcomponent.debug());
+          renderedSubcomponent.find('[data-qa-icon]').last().simulate('click');
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
