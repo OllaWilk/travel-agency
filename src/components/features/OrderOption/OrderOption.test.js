@@ -55,7 +55,7 @@ const mockPropsForType = {
   dropdown: {},
   icons: {},
   checkboxes: {currentValue: [mockProps.currentValue]},
-  number: {currentValue: 1},
+  number: {currentValue: '1'}, //Błąd:  w OrderOptionNumber oczekiwał propsa CurrentValue jako stringa. a tutaj dostawał liczbę, którą zamieniłam na stringa.
   text: {},
   date: {},
 };
@@ -93,7 +93,7 @@ for(let type in optionTypes){
     /* common tests */
     it('passes dummy test', () => {
       expect(1).toBe(1);
-      console.log(subcomponent.debug());
+      //console.log(subcomponent.debug());
     });
 
     it(`renders ${optionTypes[type]}`, () => {
@@ -141,7 +141,7 @@ for(let type in optionTypes){
 
 
         it('should run setOrderOption function on click', () => {
-          console.log(':::', renderedSubcomponent.debug());
+          //console.log(':::', renderedSubcomponent.debug());
           renderedSubcomponent.find('[data-qa-icon]').last().simulate('click');
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
@@ -154,12 +154,15 @@ for(let type in optionTypes){
         /* tests for checkboxes */
 
         it('should render input with value=testValue', () => {
-          const checkboxes = renderedSubcomponent.find('input[type="checkbox"]');
+          //console.log('%%%', renderedSubcomponent.debug());
+          const checkboxes = renderedSubcomponent.find('input[type="checkbox"]').first(); //test znajdował i "klikał" 2 inputy na raz. Wskazałam mu pierwszy input.
           expect(checkboxes.length).toBe(1);
         });
 
         it('should run setOrderOption function on change ', () => {
-          renderedSubcomponent.find(`input[value="${testValue}"]`).simulate('change', {currentTarget: {checked: true}});
+          renderedSubcomponent.find(`input[value="${testValue}"]`).simulate('change', {currentTarget: {checked: true}}); // tutaj był zły zapis był ' a powinien być `
+          //console.log('%%%', renderedSubcomponent.debug());
+
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue]});
         });
@@ -204,15 +207,18 @@ for(let type in optionTypes){
       case 'date': {
         /* tests for date */
 
-        it('contains datePicker', () => {
+        it('contains DatePicker', () => {
           const inputDate = renderedSubcomponent.find(DatePicker);
           expect(inputDate.length).toBe(1);
         });
 
         it('should run setOrderOption on change', () => {
-          renderedSubcomponent.find(DatePicker).simulate('change', testDate);
+
+          renderedSubcomponent.find(DatePicker).simulate('change', testValue);
+          console.log('', renderedSubcomponent.debug());
+
           expect(mockSetOrderOption).toBeCalledTimes(1);
-          expect(mockSetOrderOption).toBeCalledWith({[mockProps.id]: testDateValue});
+          expect(mockSetOrderOption).toBeCalledWith({[mockProps.id]: testValue});
         });
 
         break;

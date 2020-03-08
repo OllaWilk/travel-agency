@@ -34,9 +34,9 @@ describe('Component TripSummary', () => {
     const expectedImage = 'image.jpg';
     const expectedAlt = 'Lorem';
     const component = shallow(<TripSummary tags={[]} image={expectedImage} name={expectedAlt} />);
-
-    expect(component.find('img').prop('src').toEqual(expectedImage));
-    expect(component.find('img').prop('alt')).toEqual(expectedImage);
+    console.log(':::::', component.debug());
+    expect(component.find('img').prop('src')).toEqual(expectedImage);
+    expect(component.find('img').prop('alt')).toEqual(expectedAlt);
     console.log(component.debug());
   });
 
