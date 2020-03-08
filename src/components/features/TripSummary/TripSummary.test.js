@@ -4,26 +4,13 @@ import TripSummary from './TripSummary';
 
 describe('Component TripSummary', () => {
 
-  /*TESTOWANIE CZY  GENEROWANY KOMPONENT MA POPRAWNY URL*/
-
-  //warunek: powninien generować poprawny url
 
   it('should generate correct url link', () => {
 
-    //zapisanie stałych wartości(warunków). Jeśli to ma wartość taką to spodziewaj się tego(expect)
-
     const expectedId ='abc';
-
-    // stała component zapisuje wynik funkcji shallow, która renderuje komponent
-    // więcej metod shallow => https://enzymejs.github.io/enzyme/docs/api/shallow.html
-
     const component = shallow(<TripSummary tags={[]} id={expectedId} />);
 
-    //.find znajduje wyszystkie elementy pasujące do selektora
-
     const renderedLink = component.find('.link').prop('to');
-
-    //spodziewaj się, że link zapisany w stałej będzie równy linkowi adresu '/trip/abc'
     expect(renderedLink).toEqual(`/trip/${expectedId}`);
     //console.log(component.debug());
   });
@@ -56,7 +43,7 @@ describe('Component TripSummary', () => {
 
   /*czy jest wywoływany błąd w przypadku braku któregokolwiek z propsów: id, image, name, cost i days. */
   it('should throw error without required props', () => {
-    expect(() => shallow(<TripSummary tags={[]} />)).toThrow();
+    expect(() => shallow(<TripSummary />)).toThrow();
   });
 
   /*TESTOWANIE PROPSA TAGS. czy są w spanach w odpowiedniej kolejności.  przyda się => https://enzymejs.github.io/enzyme/docs/api/ShallowWrapper/at.html*/
