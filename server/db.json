@@ -188,6 +188,61 @@
       "tripId": "United States of America",
       "countryCode": "USA",
       "id": 13
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "adfadfad",
+      "contact": "dfadfadfadfadf",
+      "start-date": "",
+      "totalCost": "$51,681",
+      "tripName": "5cc1d10130dfa407e2e54e20",
+      "tripId": "Turkey",
+      "countryCode": "TUR",
+      "id": 14
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "house",
+      "features": [
+        "all-inclusive",
+        "security",
+        "pool",
+        "kitchen"
+      ],
+      "adults": "4",
+      "children": "6",
+      "name": "Ola",
+      "contact": "111444555",
+      "start-date": "",
+      "totalCost": "$268,918",
+      "tripName": "5cc1d1015f3c5f5f14384b15",
+      "tripId": "United States of America",
+      "countryCode": "USA",
+      "id": 15
+    },
+    {
+      "car-rental": "luxury",
+      "accommodation": "house",
+      "features": [
+        "all-inclusive",
+        "security",
+        "pool",
+        "kitchen"
+      ],
+      "adults": "5",
+      "children": "17",
+      "name": "Ola Wilk",
+      "contact": "987987987",
+      "start-date": "2020-04-04T16:53:59.000Z",
+      "totalCost": "$393,772",
+      "tripName": "5cc1d1013091dba04d042a96",
+      "tripId": "Vanuatu",
+      "countryCode": "VUT",
+      "id": 16
     }
   ]
 }
