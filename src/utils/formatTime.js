@@ -7,5 +7,5 @@ export const formatTime = (arg) => {
     const hours =  Math.floor(arg/ 3600).toString();
 
     return hours.padStart(2, '0') + ':' + minutes.padStart(2,'0')+ ':' + seconds.padStart(2,'0');
-  };
+  }
 };
