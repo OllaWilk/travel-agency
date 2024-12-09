@@ -1,0 +1,7 @@
+@use '../../../styles/settings.scss' as *';
+
+@media (max-width: 992px) {
+  .component {
+    display: none;
+  }
+}

@@ -1,0 +1,9 @@
+@use '../../../styles/settings.scss' as *;
+
+.title {
+  font-size: ($base-size * 3);
+}
+
+.intro {
+  margin: ($base-size * 3) 0;
+}

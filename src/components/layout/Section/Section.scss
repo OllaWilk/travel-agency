@@ -1,0 +1,13 @@
+@use '../../../styles/settings.scss' as *;
+
+.component {
+  padding: ($base-size * 4) 0;
+  width: 100%;
+  &.centered {
+    padding: 0;
+    width: auto;
+  }
+  &.has-hero {
+    padding: 0;
+  }
+}

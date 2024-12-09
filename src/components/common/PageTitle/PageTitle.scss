@@ -1,0 +1,15 @@
+@use '../../../styles/settings.scss' as *;
+
+.title {
+  position: relative;
+  font-size: 3rem;
+  margin: 2rem 0 6rem;
+  @include p-el('after') {
+    content: '';
+    width: 4rem;
+    height: 0.3rem;
+    bottom: -1rem;
+    left: 0;
+    background: $color-primary;
+  }
+}
