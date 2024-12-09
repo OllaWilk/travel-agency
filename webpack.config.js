@@ -55,7 +55,7 @@ const devConfig = () => ({
       {
         test: /\.(s*)css$/,
         use: [
-          MiniCssExtractPlugin.loader, // Użyj loadera MiniCssExtractPlugin
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
