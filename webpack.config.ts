@@ -1,11 +1,12 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
+import path from 'path';
+import { Configuration } from 'webpack';
+import 'webpack-dev-server';
+import { merge } from 'webpack-merge';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const baseConfig = () => ({
-  entry: './src/index.js',
+const baseConfig: Configuration = {
+  entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
@@ -23,13 +24,10 @@ const baseConfig = () => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
         },
       },
       {
@@ -47,9 +45,12 @@ const baseConfig = () => ({
       chunkFilename: '[id].css',
     }),
   ],
-});
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+  },
+};
 
-const devConfig = () => ({
+const devConfig: Configuration = {
   module: {
     rules: [
       {
@@ -76,9 +77,12 @@ const devConfig = () => ({
       },
     ],
   },
-});
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+  },
+};
 
-const prodConfig = () => ({
+const prodConfig: Configuration = {
   module: {
     rules: [
       {
@@ -121,10 +125,15 @@ const prodConfig = () => ({
       chunks: 'all',
     },
   },
-});
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+  },
+};
 
-module.exports = (env, argv) => {
+const config = (env: any, argv: { mode: string }): Configuration => {
   const modeConfig = argv.mode === 'production' ? prodConfig : devConfig;
 
-  return merge(baseConfig(), modeConfig());
+  return merge(baseConfig, modeConfig);
 };
+
+export default config;
