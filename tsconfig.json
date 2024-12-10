@@ -13,6 +13,6 @@
       "*": ["./*"]
     }
   },
-  "include": ["src/**/*", "webpack.config.ts"],
+  "include": ["src/**/*", "webpack.config.ts", "styles.d.ts"],
   "exclude": ["node_modules"]
 }

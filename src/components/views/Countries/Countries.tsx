@@ -1,23 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Section from '../../layout/Section/Section';
 import CountrySummary from '../../features/CountrySummary/CountrySummary';
 import PageTitle from '../../common/PageTitle/PageTitle';
 import Row from '../../layout/Row/Row';
+import { CountriesRecord, CountryType } from 'types/country-types';
 
-const Countries = ({ countries }) => (
+export type Countries = {
+  [key: string]: CountryType;
+};
+
+const Countries = ({ countries }: { countries: CountriesRecord }) => (
   <Section>
     <PageTitle text='All countries' />
     <Row>
       {Object.keys(countries).map((code) => (
-        <CountrySummary key={code} {...countries[code]} />
+        <CountrySummary key={code} {...countries[code]} trips={[]} />
       ))}
     </Row>
   </Section>
 );
-
-Countries.propTypes = {
-  countries: PropTypes.objectOf(PropTypes.object),
-};
 
 export default Countries;

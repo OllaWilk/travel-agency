@@ -1,13 +1,25 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Row from '../../layout/Row/Row';
 import Col from '../../layout/Col/Col';
 
 import styles from './TripListOptions.scss';
 
-class TripListOptions extends React.Component {
-  handleTags(tag, checked) {
+interface TripListOptionsProps {
+  tags: { [key: string]: boolean };
+  filters: {
+    phrase: string;
+    duration: {
+      from: number;
+      to: number;
+    };
+    tags: string[];
+  };
+  changeSearchPhrase: (phrase: string) => void;
+}
+
+class TripListOptions extends React.Component<TripListOptionsProps> {
+  handleTags(tag: string, checked: boolean) {
     if (checked) {
       console.log('Adding tag', tag);
       // TODO - use action dispatcher from props
@@ -17,17 +29,18 @@ class TripListOptions extends React.Component {
     }
   }
 
-  handleDuration(type, value) {
+  handleDuration(type: 'from' | 'to', value: number) {
     console.log('Changing duration', type, value);
     // TODO - use action dispatcher from props
   }
 
-  handleSearch(phrase) {
+  handleSearch(phrase: string) {
     this.props.changeSearchPhrase(phrase);
   }
 
   render() {
     const { tags, filters } = this.props;
+
     return (
       <div className={styles.component}>
         <Row>
@@ -57,7 +70,10 @@ class TripListOptions extends React.Component {
                   min='1'
                   max='14'
                   onChange={(event) =>
-                    this.handleDuration('from', event.currentTarget.value)
+                    this.handleDuration(
+                      'from',
+                      Number(event.currentTarget.value)
+                    )
                   }
                 />
               </label>
@@ -70,7 +86,7 @@ class TripListOptions extends React.Component {
                   min='1'
                   max='14'
                   onChange={(event) =>
-                    this.handleDuration('to', event.currentTarget.value)
+                    this.handleDuration('to', Number(event.currentTarget.value))
                   }
                 />
               </label>
@@ -102,11 +118,5 @@ class TripListOptions extends React.Component {
     );
   }
 }
-
-TripListOptions.propTypes = {
-  tags: PropTypes.object,
-  filters: PropTypes.object,
-  changeSearchPhrase: PropTypes.func,
-};
 
 export default TripListOptions;

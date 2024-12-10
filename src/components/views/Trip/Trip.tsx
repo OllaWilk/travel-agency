@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import HTMLParser from 'react-html-parser';
-
+import parser from 'html-react-parser';
 import NotFound from '../NotFound/NotFound';
 import Section from '../../layout/Section/Section';
+import Row from '../../layout/Row/Row';
+import Col from '../../layout/Col/Col';
 import PageTitle from '../../common/PageTitle/PageTitle';
 import SideImage from '../../common/SideImage/SideImage';
 import DetailsBox from '../../common/DetailsBox/DetailsBox';
@@ -12,8 +12,26 @@ import List from '../../common/List/List';
 import ListItem from '../../common/ListItem/ListItem';
 
 import styles from './Trip.scss';
-import Row from '../../layout/Row/Row';
-import Col from '../../layout/Col/Col';
+import { Trip } from 'types/trip-types';
+import { Currency } from 'types/country-types';
+
+type TripProps = {
+  error: string;
+  image: string;
+  name: string;
+  cost: string;
+  days: number;
+  description: string;
+  country: {
+    name: string;
+    capital: string;
+    population: number;
+    code: string;
+    currencies: Currency[];
+    flag: string;
+  };
+  intro: string;
+};
 
 const Trip = ({
   error,
@@ -24,7 +42,7 @@ const Trip = ({
   description,
   country,
   intro,
-}) => {
+}: TripProps) => {
   if (error) return <NotFound />;
   else
     return (
@@ -38,7 +56,7 @@ const Trip = ({
 
           <Row>
             <Col md={12} lg={4}>
-              <div className={styles.intro}>{HTMLParser(intro)}</div>
+              <div className={styles.intro}>{parser(intro)}</div>
               <List variant='light'>
                 <ListItem
                   title={`<strong>Duration:</strong> ${days} days`}
@@ -56,7 +74,7 @@ const Trip = ({
         <Row>
           <Col xs={12}>
             <PageTitle text='Trip details' />
-            {HTMLParser(description)}
+            {parser(description)}
           </Col>
         </Row>
 
@@ -90,15 +108,6 @@ const Trip = ({
         </DetailsBox>
       </Section>
     );
-};
-
-Trip.propTypes = {
-  name: PropTypes.string,
-  image: PropTypes.string,
-  cost: PropTypes.string,
-  days: PropTypes.number,
-  description: PropTypes.string,
-  country: PropTypes.object,
 };
 
 export default Trip;

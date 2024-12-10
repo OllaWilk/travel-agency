@@ -1,11 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styles from './TripSummary.scss';
 import Col from '../../layout/Col/Col';
+import styles from './TripSummary.scss';
+import { TripSummaryType } from 'types/trip-types';
 
-const TripSummary = ({ id, image, name, cost, days, tags }) => (
-  <Col xs={12} sm={6} lg={4} classes={styles.column}>
+const TripSummary = ({
+  id,
+  image,
+  name,
+  cost,
+  days,
+  tags,
+}: TripSummaryType) => (
+  <Col xs={12} sm={6} lg={4}>
     <Link to={`/trip/${id}`} className={styles.link}>
       <article className={styles.component}>
         <img src={image} alt={name} />
@@ -25,15 +32,5 @@ const TripSummary = ({ id, image, name, cost, days, tags }) => (
     </Link>
   </Col>
 );
-
-TripSummary.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  image: PropTypes.string,
-  name: PropTypes.string,
-  intro: PropTypes.string,
-  cost: PropTypes.string,
-  days: PropTypes.number,
-  tags: PropTypes.array,
-};
 
 export default TripSummary;

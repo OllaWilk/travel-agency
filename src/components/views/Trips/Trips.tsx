@@ -1,15 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Trip, TripsType } from 'types/trip-types';
 
 import TripSummary from '../../features/TripSummary/TripSummary';
+import TripListOptions from '../../features/TripListOptions/TripListOptions';
 import Section from '../../layout/Section/Section';
-import PageTitle from '../../common/PageTitle/PageTitle';
-
 import Row from '../../layout/Row/Row';
 import Col from '../../layout/Col/Col';
-import TripListOptions from '../../features/TripListOptions/TripListOptionsContainer';
+import PageTitle from '../../common/PageTitle/PageTitle';
 
-const Trips = ({ trips }) => (
+const Trips = ({ trips }: TripsType) => (
   <Section>
     <Row>
       <Col xs={12}>
@@ -17,7 +16,7 @@ const Trips = ({ trips }) => (
         <TripListOptions />
         <Row>
           {trips.length ? (
-            trips.map((trip) => <TripSummary key={trip.id} {...trip} />)
+            trips.map((trip: Trip) => <TripSummary key={trip.id} {...trip} />)
           ) : (
             <p>Sorry, no results found. Try adjusting the filters.</p>
           )}
@@ -26,9 +25,5 @@ const Trips = ({ trips }) => (
     </Row>
   </Section>
 );
-
-Trips.propTypes = {
-  trips: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default Trips;

@@ -1,13 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Section from '../../layout/Section/Section';
 import PageTitle from '../../common/PageTitle/PageTitle';
 import CountrySummary from '../../features/CountrySummary/CountrySummary';
 
 import styles from './Regions.scss';
 import Row from '../../layout/Row/Row';
+import { CountryType } from 'types/country-types';
 
-const Regions = ({ regions, subregions, countries }) => (
+interface Subregion {
+  countries: string[];
+}
+
+interface Region {
+  subregions: string[];
+}
+
+interface Props {
+  regions: Record<string, Region>;
+  subregions: Record<string, Subregion>;
+  countries: Record<string, CountryType>;
+}
+const Regions = ({ regions, subregions, countries }: Props) => (
   <Section>
     <PageTitle text='All regions' />
     {Object.keys(regions).map((regionName) => (
@@ -30,11 +43,5 @@ const Regions = ({ regions, subregions, countries }) => (
     ))}
   </Section>
 );
-
-Regions.propTypes = {
-  regions: PropTypes.objectOf(PropTypes.object),
-  subregions: PropTypes.objectOf(PropTypes.object),
-  countries: PropTypes.objectOf(PropTypes.object),
-};
 
 export default Regions;

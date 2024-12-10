@@ -130,7 +130,7 @@ const prodConfig: Configuration = {
   },
 };
 
-const config = (env: any, argv: { mode: string }): Configuration => {
+const config = (argv: { mode: string }): Configuration => {
   const modeConfig = argv.mode === 'production' ? prodConfig : devConfig;
 
   return merge(baseConfig, modeConfig);

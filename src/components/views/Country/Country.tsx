@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Hero from '../../layout/Hero/Hero';
 import Section from '../../layout/Section/Section';
@@ -13,7 +12,10 @@ import TripSummary from '../../features/TripSummary/TripSummary';
 
 import Col from '../../layout/Col/Col';
 import Row from '../../layout/Row/Row';
+import { TripsType } from 'types/trip-types';
+import { CountryType } from 'types/country-types';
 
+type CountryTypeProp = CountryType & TripsType;
 const Country = ({
   name,
   capital,
@@ -22,7 +24,7 @@ const Country = ({
   currencies,
   population,
   trips,
-}) => (
+}: CountryTypeProp) => (
   <Section variant='has-hero'>
     <Hero
       variant='small'
@@ -48,16 +50,20 @@ const Country = ({
               title={`<strong>Capital:</strong> ${capital}`}
               icon='city'
             />
-            <ListItem
-              title={`<strong>Population:</strong> ${
-                population / 1000000
-              } millions`}
-              icon='users'
-            />
-            <ListItem
-              title={`<strong>Currency:</strong> ${currencies[0].name} (${currencies[0].code})`}
-              icon='money-bill-wave'
-            />
+            {population && (
+              <ListItem
+                title={`<strong>Population:</strong> ${
+                  population / 1000000
+                } millions`}
+                icon='users'
+              />
+            )}
+            {currencies && (
+              <ListItem
+                title={`<strong>Currency:</strong> ${currencies[0].name} (${currencies[0].code})`}
+                icon='money-bill-wave'
+              />
+            )}
           </List>
         </Col>
       </Row>
@@ -73,16 +79,5 @@ const Country = ({
     </Row>
   </Section>
 );
-
-Country.propTypes = {
-  name: PropTypes.string,
-  flag: PropTypes.string,
-  capital: PropTypes.string,
-  region: PropTypes.string,
-  subregion: PropTypes.string,
-  currencies: PropTypes.array,
-  population: PropTypes.number,
-  trips: PropTypes.array,
-};
 
 export default Country;

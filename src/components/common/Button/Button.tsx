@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from './Button.scss';
-import PropTypes from 'prop-types';
+import { ButtonProps } from 'types/base-types';
 
-const Button = ({variant = '', ...otherProps}) => (
+const Button = ({ variant = '', ...otherProps }: ButtonProps) => (
   <button
     {...otherProps}
-    className={styles.component + variant.split(' ').map(name => ' ' + (styles[name] || name)).join('')}
+    className={
+      styles.component +
+      variant
+        .split(' ')
+        .map((name) => ' ' + (styles[name] || name))
+        .join('')
+    }
   />
 );
-
-Button.propTypes = {
-  variant: PropTypes.string,
-};
 
 export default Button;

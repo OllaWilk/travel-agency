@@ -1,21 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import Icon from '../Icon/Icon';
 import styles from './ListItem.scss';
 
-function ListItem(props) {
+interface Props {
+  icon: string;
+  title: string;
+}
+
+function ListItem({ icon, title }: Props) {
   return (
     <div className={styles.component}>
-      <Icon name={props.icon} />
-      <span>{parse(props.title)}</span>
+      <Icon name={icon} />
+      <span>{parse(title)}</span>
     </div>
   );
 }
-
-ListItem.propTypes = {
-  icon: PropTypes.string,
-  title: PropTypes.string,
-};
 
 export default ListItem;

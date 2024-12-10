@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './List.scss';
+import { VariantAndChildren } from 'types/base-types';
+import styles from './DetailsImage.scss';
 
-const List = ({ variant = '', children, ...otherProps }) => (
+const DetailsImage = ({
+  variant = '',
+  children,
+  ...otherProps
+}: VariantAndChildren) => (
   <div
     {...otherProps}
     className={
@@ -17,9 +21,4 @@ const List = ({ variant = '', children, ...otherProps }) => (
   </div>
 );
 
-List.propTypes = {
-  variant: PropTypes.string,
-  children: PropTypes.node,
-};
-
-export default List;
+export default DetailsImage;

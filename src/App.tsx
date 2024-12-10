@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
 
@@ -15,11 +14,6 @@ import parseTrips from './utils/parseTrips';
 import { setMultipleStates } from './redux/globalRedux';
 
 class App extends React.Component {
-  static propTypes = {
-    trips: PropTypes.array,
-    setStates: PropTypes.func,
-  };
-
   constructor(props) {
     super(props);
     // parse trips when App is first created

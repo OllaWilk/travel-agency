@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { CountryType } from 'types/country-types';
+import { Trip } from 'types/trip-types';
 import { Link } from 'react-router-dom';
 import SideImage from '../../common/SideImage/SideImage';
 import DetailsBox from '../../common/DetailsBox/DetailsBox';
@@ -10,6 +11,8 @@ import Row from '../../layout/Row/Row';
 import Col from '../../layout/Col/Col';
 import styles from './CountrySummary.scss';
 
+type CountrySummary = { trips?: Trip[] } & CountryType;
+
 const CountrySummary = ({
   alpha3Code,
   name,
@@ -19,7 +22,7 @@ const CountrySummary = ({
   subregion,
   languages,
   capital,
-}) => (
+}: CountrySummary) => (
   <Col xs={12}>
     <Link to={`/country/${alpha3Code}`} className={styles.component}>
       <DetailsBox variant='small light'>
@@ -36,7 +39,9 @@ const CountrySummary = ({
                 </h4>
                 <List variant='light'>
                   <ListItem
-                    title={`<strong>Available trips:</strong> ${trips.length}`}
+                    title={`<strong>Available trips:</strong> ${
+                      trips && trips.length
+                    }`}
                     icon='arrow-circle-right'
                   />
                 </List>
@@ -62,16 +67,5 @@ const CountrySummary = ({
     </Link>
   </Col>
 );
-
-CountrySummary.propTypes = {
-  alpha3Code: PropTypes.string,
-  name: PropTypes.string,
-  flag: PropTypes.string,
-  trips: PropTypes.array,
-  region: PropTypes.string,
-  subregion: PropTypes.string,
-  languages: PropTypes.arrayOf(PropTypes.object),
-  capital: PropTypes.string,
-};
 
 export default CountrySummary;

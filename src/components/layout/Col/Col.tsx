@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Col.scss';
+import { ColProps } from 'types/base-types';
 
 const Col = ({
   children,
   xs,
+  sm,
   md,
   lg,
   xl,
@@ -12,10 +13,11 @@ const Col = ({
   offsetXl,
   className,
   style,
-}) => {
+}: ColProps) => {
   const classes = [
     'col',
     xs && `col-xs-${xs}`,
+    sm && `col-sm-${sm}`,
     md && `col-md-${md}`,
     lg && `col-lg-${lg}`,
     xl && `col-xl-${xl}`,
@@ -31,18 +33,6 @@ const Col = ({
       {children}
     </div>
   );
-};
-
-Col.propTypes = {
-  children: PropTypes.node.isRequired,
-  xs: PropTypes.number,
-  md: PropTypes.number,
-  lg: PropTypes.number,
-  xl: PropTypes.number,
-  offsetLg: PropTypes.number,
-  offsetXl: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
 };
 
 export default Col;
