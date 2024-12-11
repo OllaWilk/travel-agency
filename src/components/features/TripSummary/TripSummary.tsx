@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TripSummaryType } from 'types/trip-types';
-import { Col } from '../../layout/Col/Col';
+import { Col } from 'react-bootstrap';
+
 import styles from './TripSummary.scss';
 
 const TripSummary = ({

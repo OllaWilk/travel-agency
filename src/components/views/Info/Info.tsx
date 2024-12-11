@@ -3,8 +3,7 @@ import { Section } from '../../layout/Section/Section';
 import { PageTitle } from '../../common/PageTitle/PageTitle';
 import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
-import { Row } from '../../layout/Row/Row';
-import { Col } from '../../layout/Col/Col';
+
 import styles from './Info.scss';
 
 class Info extends React.Component {

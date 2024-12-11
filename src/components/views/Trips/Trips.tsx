@@ -1,14 +1,13 @@
 import React from 'react';
 import { Trip } from 'types/trip-types';
+import { Col, Container, Row } from 'react-bootstrap';
 import { TripSummary } from '../../features/TripSummary/TripSummary';
 import { TripListOptions } from '../../features/TripListOptions/TripListOptions';
 import { Section } from '../../layout/Section/Section';
-import { Row } from '../../layout/Row/Row';
-import { Col } from '../../layout/Col/Col';
+
 import { PageTitle } from '../../common/PageTitle/PageTitle';
 import { useSelector } from 'react-redux';
 import { getFilteredTrips } from '../../../redux/tripsReducer';
-import { Container } from '../../layout/Container/Container';
 
 const Trips = () => {
   const trips = useSelector(getFilteredTrips);

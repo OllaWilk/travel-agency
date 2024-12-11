@@ -54,7 +54,13 @@ const devConfig: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(s*)css$/,
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules/bootstrap')],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(scss|sass)$/,
+        exclude: [path.resolve(__dirname, 'node_modules/bootstrap')],
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -86,11 +92,13 @@ const prodConfig: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(s*)css$/,
-        include: [
-          path.resolve(__dirname, 'node_modules/'),
-          path.resolve(__dirname, 'src/'),
-        ],
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules/bootstrap')],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(scss|sass)$/,
+        exclude: [path.resolve(__dirname, 'node_modules/bootstrap')],
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -113,6 +121,7 @@ const prodConfig: Configuration = {
       },
     ],
   },
+
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles_bundle_[name].css',

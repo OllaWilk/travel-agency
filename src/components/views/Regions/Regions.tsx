@@ -3,7 +3,6 @@ import { Section } from '../../layout/Section/Section';
 import { PageTitle } from '../../common/PageTitle/PageTitle';
 import { CountrySummary } from '../../features/CountrySummary/CountrySummary';
 
-import { Row } from '../../layout/Row/Row';
 import { CountryType } from 'types/country-types';
 import styles from './Regions.scss';
 

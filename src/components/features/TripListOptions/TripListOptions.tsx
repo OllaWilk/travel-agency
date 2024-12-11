@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { Row } from '../../layout/Row/Row';
-import { Col } from '../../layout/Col/Col';
+import { Col, Row } from 'react-bootstrap';
 
 import styles from './TripListOptions.scss';
 

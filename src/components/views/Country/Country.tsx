@@ -10,8 +10,6 @@ import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
 import { TripSummary } from '../../features/TripSummary/TripSummary';
 
-import { Col } from '../../layout/Col/Col';
-import { Row } from '../../layout/Row/Row';
 import { TripsType } from 'types/trip-types';
 import { CountryType } from 'types/country-types';
 

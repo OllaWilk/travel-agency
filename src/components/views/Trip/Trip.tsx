@@ -2,8 +2,7 @@ import React from 'react';
 import parser from 'html-react-parser';
 import { NotFound } from '../NotFound/NotFound';
 import { Section } from '../../layout/Section/Section';
-import { Row } from '../../layout/Row/Row';
-import { Col } from '../../layout/Col/Col';
+
 import { PageTitle } from '../../common/PageTitle/PageTitle';
 import { SideImage } from '../../common/SideImage/SideImage';
 import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
