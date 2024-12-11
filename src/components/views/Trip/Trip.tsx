@@ -1,19 +1,19 @@
 import React from 'react';
 import parser from 'html-react-parser';
-import NotFound from '../NotFound/NotFound';
-import Section from '../../layout/Section/Section';
-import Row from '../../layout/Row/Row';
-import Col from '../../layout/Col/Col';
-import PageTitle from '../../common/PageTitle/PageTitle';
-import SideImage from '../../common/SideImage/SideImage';
-import DetailsBox from '../../common/DetailsBox/DetailsBox';
-import DetailsImage from '../../common/DetailsImage/DetailsImage';
-import List from '../../common/List/List';
-import ListItem from '../../common/ListItem/ListItem';
+import { NotFound } from '../NotFound/NotFound';
+import { Section } from '../../layout/Section/Section';
+import { Row } from '../../layout/Row/Row';
+import { Col } from '../../layout/Col/Col';
+import { PageTitle } from '../../common/PageTitle/PageTitle';
+import { SideImage } from '../../common/SideImage/SideImage';
+import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
+import { DetailsImage } from '../../common/DetailsImage/DetailsImage';
+import { List } from '../../common/List/List';
+import { ListItem } from '../../common/ListItem/ListItem';
 
-import styles from './Trip.scss';
 import { Trip } from 'types/trip-types';
 import { Currency } from 'types/country-types';
+import styles from './Trip.scss';
 
 type TripProps = {
   error: string;
@@ -110,4 +110,4 @@ const Trip = ({
     );
 };
 
-export default Trip;
+export { Trip };

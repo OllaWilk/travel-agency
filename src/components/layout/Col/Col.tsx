@@ -1,6 +1,6 @@
 import React from 'react';
-import './Col.scss';
 import { ColProps } from 'types/base-types';
+import './Col.scss';
 
 const Col = ({
   children,
@@ -35,4 +35,4 @@ const Col = ({
   );
 };
 
-export default Col;
+export { Col };

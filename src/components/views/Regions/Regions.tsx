@@ -1,11 +1,11 @@
 import React from 'react';
-import Section from '../../layout/Section/Section';
-import PageTitle from '../../common/PageTitle/PageTitle';
-import CountrySummary from '../../features/CountrySummary/CountrySummary';
+import { Section } from '../../layout/Section/Section';
+import { PageTitle } from '../../common/PageTitle/PageTitle';
+import { CountrySummary } from '../../features/CountrySummary/CountrySummary';
 
-import styles from './Regions.scss';
-import Row from '../../layout/Row/Row';
+import { Row } from '../../layout/Row/Row';
 import { CountryType } from 'types/country-types';
+import styles from './Regions.scss';
 
 interface Subregion {
   countries: string[];
@@ -44,4 +44,4 @@ const Regions = ({ regions, subregions, countries }: Props) => (
   </Section>
 );
 
-export default Regions;
+export { Regions };

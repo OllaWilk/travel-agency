@@ -1,11 +1,11 @@
 import React from 'react';
+import { Section } from '../../layout/Section/Section';
+import { PageTitle } from '../../common/PageTitle/PageTitle';
+import { List } from '../../common/List/List';
+import { ListItem } from '../../common/ListItem/ListItem';
+import { Row } from '../../layout/Row/Row';
+import { Col } from '../../layout/Col/Col';
 import styles from './Info.scss';
-import Section from '../../layout/Section/Section';
-import PageTitle from '../../common/PageTitle/PageTitle';
-import List from '../../common/List/List';
-import ListItem from '../../common/ListItem/ListItem';
-import Row from '../../layout/Row/Row';
-import Col from '../../layout/Col/Col';
 
 class Info extends React.Component {
   render() {
@@ -40,4 +40,4 @@ class Info extends React.Component {
     );
   }
 }
-export default Info;
+export { Info };

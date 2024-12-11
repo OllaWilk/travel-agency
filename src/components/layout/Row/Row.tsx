@@ -1,11 +1,11 @@
 import React from 'react';
-import './Row.scss';
 import { RowType } from 'types/base-types';
+import styles from './Row.scss';
 
-const Row = ({ children, className, style }: RowType) => (
-  <div className={`row ${className || ''}`} style={style}>
+const Row = ({ children, style, className }: RowType) => (
+  <div className={`${styles.row} ${className ? className : ''}`} style={style}>
     {children}
   </div>
 );
 
-export default Row;
+export { Row };

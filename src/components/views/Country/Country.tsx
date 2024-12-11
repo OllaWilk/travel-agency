@@ -1,17 +1,17 @@
 import React from 'react';
 
-import Hero from '../../layout/Hero/Hero';
-import Section from '../../layout/Section/Section';
-import PageTitle from '../../common/PageTitle/PageTitle';
-import SideImage from '../../common/SideImage/SideImage';
-import DetailsBox from '../../common/DetailsBox/DetailsBox';
-import DetailsImage from '../../common/DetailsImage/DetailsImage';
-import List from '../../common/List/List';
-import ListItem from '../../common/ListItem/ListItem';
-import TripSummary from '../../features/TripSummary/TripSummary';
+import { Hero } from '../../layout/Hero/Hero';
+import { Section } from '../../layout/Section/Section';
+import { PageTitle } from '../../common/PageTitle/PageTitle';
+import { SideImage } from '../../common/SideImage/SideImage';
+import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
+import { DetailsImage } from '../../common/DetailsImage/DetailsImage';
+import { List } from '../../common/List/List';
+import { ListItem } from '../../common/ListItem/ListItem';
+import { TripSummary } from '../../features/TripSummary/TripSummary';
 
-import Col from '../../layout/Col/Col';
-import Row from '../../layout/Row/Row';
+import { Col } from '../../layout/Col/Col';
+import { Row } from '../../layout/Row/Row';
 import { TripsType } from 'types/trip-types';
 import { CountryType } from 'types/country-types';
 
@@ -80,4 +80,4 @@ const Country = ({
   </Section>
 );
 
-export default Country;
+export { Country };

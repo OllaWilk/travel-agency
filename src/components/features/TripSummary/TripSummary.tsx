@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Col from '../../layout/Col/Col';
-import styles from './TripSummary.scss';
 import { TripSummaryType } from 'types/trip-types';
+import { Col } from '../../layout/Col/Col';
+import styles from './TripSummary.scss';
 
 const TripSummary = ({
   id,
@@ -33,4 +33,4 @@ const TripSummary = ({
   </Col>
 );
 
-export default TripSummary;
+export { TripSummary };

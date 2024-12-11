@@ -21,4 +21,4 @@ const DetailsBox = ({
   </article>
 );
 
-export default DetailsBox;
+export { DetailsBox };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Section from '../../layout/Section/Section';
-import CountrySummary from '../../features/CountrySummary/CountrySummary';
+import { CountrySummary } from '../../features/CountrySummary/CountrySummary';
 import PageTitle from '../../common/PageTitle/PageTitle';
 import Row from '../../layout/Row/Row';
 import { CountriesRecord, CountryType } from 'types/country-types';
@@ -20,4 +20,4 @@ const Countries = ({ countries }: { countries: CountriesRecord }) => (
   </Section>
 );
 
-export default Countries;
+export { Countries };

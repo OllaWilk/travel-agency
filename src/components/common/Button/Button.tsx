@@ -15,4 +15,4 @@ const Button = ({ variant = '', ...otherProps }: ButtonProps) => (
   />
 );
 
-export default Button;
+export { Button };

@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Section.scss';
 import { VariantAndChildren } from 'types/base-types';
+import styles from './Section.scss';
 
 const Section = ({
   variant = '',
@@ -21,4 +21,4 @@ const Section = ({
   </section>
 );
 
-export default Section;
+export { Section };

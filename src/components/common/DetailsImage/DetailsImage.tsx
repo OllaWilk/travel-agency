@@ -21,4 +21,4 @@ const DetailsImage = ({
   </div>
 );
 
-export default DetailsImage;
+export { DetailsImage };

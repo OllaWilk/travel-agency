@@ -18,5 +18,5 @@ export interface Trip extends TripSummaryType {
 }
 
 export interface TripsType {
-  trips: Trip[];
+  trips?: Trip[];
 }

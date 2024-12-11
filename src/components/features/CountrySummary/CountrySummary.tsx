@@ -3,10 +3,10 @@ import { CountryType } from 'types/country-types';
 import { Trip } from 'types/trip-types';
 import { Link } from 'react-router-dom';
 import SideImage from '../../common/SideImage/SideImage';
-import DetailsBox from '../../common/DetailsBox/DetailsBox';
-import DetailsImage from '../../common/DetailsImage/DetailsImage';
-import List from '../../common/List/List';
-import ListItem from '../../common/ListItem/ListItem';
+import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
+import { DetailsImage } from '../../common/DetailsImage/DetailsImage';
+import { List } from '../../common/List/List';
+import { ListItem } from '../../common/ListItem/ListItem';
 import Row from '../../layout/Row/Row';
 import Col from '../../layout/Col/Col';
 import styles from './CountrySummary.scss';
@@ -68,4 +68,4 @@ const CountrySummary = ({
   </Col>
 );
 
-export default CountrySummary;
+export { CountrySummary };

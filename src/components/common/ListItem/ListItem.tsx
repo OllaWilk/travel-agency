@@ -1,6 +1,6 @@
 import React from 'react';
 import parse from 'html-react-parser';
-import Icon from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import styles from './ListItem.scss';
 
 interface Props {
@@ -17,4 +17,4 @@ function ListItem({ icon, title }: Props) {
   );
 }
 
-export default ListItem;
+export { ListItem };

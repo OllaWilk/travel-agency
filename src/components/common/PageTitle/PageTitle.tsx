@@ -7,4 +7,4 @@ interface Props {
 
 const PageTitle = ({ text }: Props) => <h2 className={styles.title}>{text}</h2>;
 
-export default PageTitle;
+export { PageTitle };

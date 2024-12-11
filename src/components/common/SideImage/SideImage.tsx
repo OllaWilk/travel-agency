@@ -9,4 +9,4 @@ const SideImage = ({ source }: Props) => (
   <img className={styles.component} src={`${source}`} />
 );
 
-export default SideImage;
+export { SideImage };

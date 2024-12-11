@@ -1,11 +1,11 @@
 import React from 'react';
-import Section from '../../layout/Section/Section';
-import Hero from '../../layout/Hero/Hero';
-import List from '../../common/List/List';
-import ListItem from '../../common/ListItem/ListItem';
-import Row from '../../layout/Row/Row';
-import Col from '../../layout/Col/Col';
-import Container from '../../layout/Container/Container';
+import { Section } from '../../layout/Section/Section';
+import { Hero } from '../../layout/Hero/Hero';
+import { List } from '../../common/List/List';
+import { ListItem } from '../../common/ListItem/ListItem';
+import { Row } from '../../layout/Row/Row';
+import { Col } from '../../layout/Col/Col';
+import { Container } from '../../layout/Container/Container';
 import './Home.scss';
 
 const Home = () => (
@@ -29,7 +29,7 @@ const Home = () => (
             pretium. Donec porta ligula sed diam pulvinar viverra.
           </p>
         </Col>
-        <Col xs={12} md={5} xl={3}>
+        <Col md={5} xl={3}>
           <List variant='solid'>
             <ListItem title='Hand-picked destinations' icon='map-marker-alt' />
             <ListItem title='Best facilities' icon='hotel' />
@@ -42,4 +42,4 @@ const Home = () => (
   </Section>
 );
 
-export default Home;
+export { Home };

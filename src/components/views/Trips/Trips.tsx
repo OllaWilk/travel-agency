@@ -1,29 +1,54 @@
 import React from 'react';
-import { Trip, TripsType } from 'types/trip-types';
+import { Trip } from 'types/trip-types';
+import { TripSummary } from '../../features/TripSummary/TripSummary';
+import { TripListOptions } from '../../features/TripListOptions/TripListOptions';
+import { Section } from '../../layout/Section/Section';
+import { Row } from '../../layout/Row/Row';
+import { Col } from '../../layout/Col/Col';
+import { PageTitle } from '../../common/PageTitle/PageTitle';
+import { useSelector } from 'react-redux';
+import { getFilteredTrips } from '../../../redux/tripsReducer';
+import { Container } from '../../layout/Container/Container';
 
-import TripSummary from '../../features/TripSummary/TripSummary';
-import TripListOptions from '../../features/TripListOptions/TripListOptions';
-import Section from '../../layout/Section/Section';
-import Row from '../../layout/Row/Row';
-import Col from '../../layout/Col/Col';
-import PageTitle from '../../common/PageTitle/PageTitle';
+const Trips = () => {
+  const trips = useSelector(getFilteredTrips);
 
-const Trips = ({ trips }: TripsType) => (
-  <Section>
-    <Row>
-      <Col xs={12}>
-        <PageTitle text='All trips' />
-        <TripListOptions />
+  const tags = Array.from(new Set(trips.flatMap((trip) => trip.tags)));
+  const filters = {
+    phrase: '',
+    duration: { from: 0, to: 14 },
+    tags: [],
+  };
+
+  const changeSearchPhrase = (phrase: string) => {
+    console.log('Search phrase:', phrase);
+  };
+
+  return (
+    <Section>
+      <Container>
         <Row>
-          {trips.length ? (
-            trips.map((trip: Trip) => <TripSummary key={trip.id} {...trip} />)
-          ) : (
-            <p>Sorry, no results found. Try adjusting the filters.</p>
-          )}
+          <Col md={6}>
+            <PageTitle text='All trips' />
+            <TripListOptions
+              tags={tags}
+              filters={filters}
+              changeSearchPhrase={changeSearchPhrase}
+            />
+            <Row>
+              {trips.length ? (
+                trips.map((trip: Trip) => (
+                  <TripSummary key={trip.id} {...trip} />
+                ))
+              ) : (
+                <p>Sorry, no results found. Try adjusting the filters.</p>
+              )}
+            </Row>
+          </Col>
         </Row>
-      </Col>
-    </Row>
-  </Section>
-);
+      </Container>
+    </Section>
+  );
+};
 
-export default Trips;
+export { Trips };

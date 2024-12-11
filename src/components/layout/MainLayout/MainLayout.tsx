@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChildrenOnly } from 'types/base-types';
-import Header from '../Header/Header';
+import { Header } from '../Header/Header';
 
 const MainLayout = ({ children }: ChildrenOnly) => (
   <div>
@@ -9,4 +9,4 @@ const MainLayout = ({ children }: ChildrenOnly) => (
   </div>
 );
 
-export default MainLayout;
+export { MainLayout };

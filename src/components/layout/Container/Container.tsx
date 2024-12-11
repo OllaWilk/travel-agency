@@ -6,4 +6,4 @@ const Container = ({ children }: ChildrenOnly) => {
   return <div className={styles.container}>{children}</div>;
 };
 
-export default Container;
+export { Container };

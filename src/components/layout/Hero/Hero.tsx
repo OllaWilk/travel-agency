@@ -22,4 +22,4 @@ const Hero = ({ variant = '', titleText, imageSrc, ...otherProps }: Props) => (
   </div>
 );
 
-export default Hero;
+export { Hero };
