@@ -8,14 +8,14 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const baseConfig: Configuration = {
   entry: './src/index.tsx',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'public'),
     publicPath: '/',
     filename: 'scripts_bundle.js',
   },
   devtool: 'source-map',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'public'),
     },
     historyApiFallback: true,
     compress: true,
