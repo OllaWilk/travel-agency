@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { CountrySummeryType } from 'types/country-types';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
 import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
-import { useSelector } from 'react-redux';
-import { getAllTrips } from '../../../redux/selectors/tripsSelectors';
 
 import styles from './CountrySummary.scss';
+import { useSelector } from 'react-redux';
+import { getTripsForCountry } from '../../../redux/selectors/tripsSelectors';
 
 type CountrySummary = CountrySummeryType;
 
@@ -20,7 +20,12 @@ const CountrySummary = ({
   languages,
   capital,
 }: CountrySummary) => {
-  const trips = useSelector(getAllTrips);
+  const selectTripsForCountry = useMemo(
+    () => getTripsForCountry(alpha3Code!),
+    [alpha3Code]
+  );
+
+  const trips = useSelector(selectTripsForCountry);
 
   return (
     <Col xs={12}>

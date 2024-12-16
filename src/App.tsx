@@ -21,8 +21,7 @@ const App = () => {
 
   useEffect(() => {
     const parsedState = parseTrips(tripsList, countriesList);
-    console.log(parsedState.countries);
-    console.log(parsedState);
+
     dispatch(setTrips(tripsList));
     dispatch(setCountries(parsedState.countries));
   }, [dispatch]);
