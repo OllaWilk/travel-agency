@@ -1,6 +1,5 @@
 import React from 'react';
 import { CountrySummeryType } from 'types/country-types';
-import { TripType } from 'types/trip-types';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
@@ -11,7 +10,7 @@ import { getAllTrips } from '../../../redux/selectors/tripsSelectors';
 
 import styles from './CountrySummary.scss';
 
-type CountrySummary = { trips?: TripType[] } & CountrySummeryType;
+type CountrySummary = CountrySummeryType;
 
 const CountrySummary = ({
   alpha3Code,

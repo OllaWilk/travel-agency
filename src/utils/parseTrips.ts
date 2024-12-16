@@ -1,62 +1,105 @@
-import countries from '../data/countries.json';
+import { TripType } from 'types/trip-types';
+import { CountriesType } from 'types/country-types';
 
-const parseTrips = (trips, setStates) => {
-  const newState = {
+export interface ParsedTripsState {
+  countries: Record<string, CountriesType>;
+  regions: Record<string, RegionType>;
+  subregions: Record<string, SubregionType>;
+  tags: Record<string, TagType>;
+}
+
+export interface RegionType {
+  countries: string[];
+  subregions: string[];
+}
+
+export interface SubregionType {
+  region: string;
+  countries: string[];
+}
+
+export interface TagType {
+  trips: string[];
+}
+
+const parseTrips = (
+  trips: TripType[],
+  countries: CountriesType[]
+): ParsedTripsState => {
+  const state: ParsedTripsState = {
     countries: {},
     regions: {},
     subregions: {},
     tags: {},
   };
 
-  for(let trip of trips){
+  for (const trip of trips) {
+    /* add country to state.countries */
+    if (!state.countries[trip.country.code]) {
+      const countryDetails = countries.find(
+        (country) => country.alpha3Code === trip.country.code
+      ) || {
+        name: trip.country.name,
+        alpha3Code: trip.country.code,
+        region: '',
+        subregion: '',
+        languages: [],
+        capital: '',
+      };
 
-    /* add country to newState.countries */
-    if(typeof(newState.countries[trip.country.code]) == 'undefined'){
-      const countryDetails = countries.filter(item => item.alpha3Code == trip.country.code)[0] || {};
-      newState.countries[trip.country.code] = JSON.parse(JSON.stringify(countryDetails));
-      newState.countries[trip.country.code].trips = [trip.id];
+      state.countries[trip.country.code] = {
+        ...countryDetails,
+        trips: [trip.id],
+      };
     } else {
-      newState.countries[trip.country.code].trips.push(trip.id);
+      state.countries[trip.country.code].trips!.push(trip.id);
     }
 
     /* add all tags to newState.tags */
-    for(let tag of trip.tags){
-      if(typeof(newState.tags[tag]) == 'undefined'){
-        newState.tags[tag] = {trips: [trip.id]};
+    for (const tag of trip.tags) {
+      if (!state.tags[tag]) {
+        state.tags[tag] = { trips: [trip.id] };
       } else {
-        newState.tags[tag].trips.push(trip.id);
+        state.tags[tag].trips.push(trip.id);
       }
     }
   }
 
-  for(let countryCode in newState.countries){
-    const country = newState.countries[countryCode];
+  for (const countryCode in state.countries) {
+    const country = state.countries[countryCode];
 
     /* add region to newState.regions */
-    if(typeof(newState.regions[country.region]) == 'undefined'){
-      newState.regions[country.region] = {
-        countries: [country.alpha3Code],
+    if (!state.regions[country.region]) {
+      state.regions[country.region] = {
+        countries: [country.alpha3Code!],
         subregions: [country.subregion],
       };
-    } else if(newState.regions[country.region].subregions.indexOf(country.subregion) == -1) {
-      newState.regions[country.region].subregions.push(country.subregion);
-      newState.regions[country.region].countries.push(country.alpha3Code);
-    } else if(newState.regions[country.region].countries.indexOf(country.alpha3Code) == -1) {
-      newState.regions[country.region].countries.push(country.alpha3Code);
+    } else {
+      const region = state.regions[country.region];
+
+      if (!region.countries.includes(country.alpha3Code!)) {
+        region.countries.push(country.alpha3Code!);
+      }
+
+      if (!region.countries.includes(country.subregion)) {
+        region.subregions.push(country.subregion);
+      }
     }
 
     /* add subregion to newState.subregions */
-    if(typeof(newState.subregions[country.subregion]) == 'undefined'){
-      newState.subregions[country.subregion] = {
+    if (!state.subregions[country.subregion]) {
+      state.subregions[country.subregion] = {
         region: country.region,
-        countries: [country.alpha3Code],
+        countries: [country.alpha3Code!],
       };
-    } else if(newState.subregions[country.subregion].countries.indexOf(country.alpha3Code) == -1) {
-      newState.subregions[country.subregion].countries.push(country.alpha3Code);
+    } else {
+      const subregion = state.subregions[country.subregion];
+      if (!subregion.countries.includes(country.alpha3Code!))
+        subregion.countries.push(country.alpha3Code!);
     }
   }
 
-  setStates(newState);
+  return state;
 };
 
 export default parseTrips;

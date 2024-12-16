@@ -27,6 +27,7 @@ export interface CountriesType extends CountrySummeryType {
   population?: number;
   timezones?: string[];
   borders?: string[];
+  trips?: string[];
 }
 
 export type AllCountries = CountriesType[];

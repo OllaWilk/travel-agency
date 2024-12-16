@@ -9,7 +9,6 @@ import { CountrySummary } from '../../features/CountrySummary/CountrySummary';
 const Countries = () => {
   const countries = useSelector(getAllCountries);
 
-  console.log(countries);
   return (
     <Section>
       <Container>
@@ -17,8 +16,14 @@ const Countries = () => {
         <Row>
           {Object.keys(countries).map((code) => (
             <div key={code}>
-              <CountrySummary key={code} {...countries[Number(code)]} />
-              <p>{code}</p>
+              <CountrySummary
+                name={countries[code].name}
+                alpha3Code={countries[code].alpha3Code}
+                region={countries[code].region}
+                subregion={countries[code].subregion}
+                languages={countries[code].languages}
+                capital={countries[code].capital}
+              />
             </div>
           ))}
         </Row>

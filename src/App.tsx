@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import tripsList from './data/trips.json';
 import countriesList from './data/countries.json';
+import parseTrips from './utils/parseTrips';
 import { useDispatch } from 'react-redux';
 import { setTrips } from './redux/slices/tripsSlice';
 import { setCountries } from './redux/slices/countriesSlice';
@@ -19,8 +20,11 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const parsedState = parseTrips(tripsList, countriesList);
+    console.log(parsedState.countries);
+    console.log(parsedState);
     dispatch(setTrips(tripsList));
-    dispatch(setCountries(countriesList));
+    dispatch(setCountries(parsedState.countries));
   }, [dispatch]);
 
   return (
