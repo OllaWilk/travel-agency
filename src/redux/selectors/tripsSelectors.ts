@@ -1,6 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'redux/store';
 import { TripType } from 'types/trip-types';
+import { getAllCountries } from './countriesSelectors';
+import { CountriesType } from 'types/country-types';
 
 export const getAllTrips = (state: RootState) => state.trips;
 
@@ -22,11 +24,12 @@ export const getAllTrips = (state: RootState) => state.trips;
 //   return output;
 // };
 
-export const getTripById = (state: RootState, tripId: string) => {
-  const filtered = state.trips.filter((trip) => trip.id == tripId);
-  console.log('filtering trips by tripId:', tripId, filtered);
-  return filtered.length ? filtered[0] : { error: true };
-};
+export const getTripById =
+  (tripId: string) =>
+  (state: RootState): TripType | null => {
+    const filtered = state.trips.filter((trip) => trip.id === tripId);
+    return filtered.length ? filtered[0] : null;
+  };
 
 export const getTripsForCountry = (countryCode: string) => {
   const filteredTrips = createSelector([getAllTrips], (trips: TripType[]) =>
@@ -34,3 +37,13 @@ export const getTripsForCountry = (countryCode: string) => {
   );
   return filteredTrips;
 };
+
+export const getTripAndCountry = (tripId: string) =>
+  createSelector(
+    [getTripById(tripId), getAllCountries],
+    (trip: TripType | null, countries: Record<string, CountriesType>) => {
+      if (!trip) return { trip: null, country: null };
+      const country = countries[trip.country.code] || null;
+      return { trip, country };
+    }
+  );

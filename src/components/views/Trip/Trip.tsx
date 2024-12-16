@@ -1,60 +1,50 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import parser from 'html-react-parser';
+import { useParams } from 'react-router-dom';
 import { NotFound } from '../NotFound/NotFound';
 import { Section } from '../../layout/Section/Section';
-
 import { PageTitle } from '../../common/PageTitle/PageTitle';
 import { SideImage } from '../../common/SideImage/SideImage';
 import { DetailsBox } from '../../common/DetailsBox/DetailsBox';
 import { DetailsImage } from '../../common/DetailsImage/DetailsImage';
 import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
-
-import { Currency } from 'types/country-types';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import styles from './Trip.scss';
-import { getTripById } from '../../../redux/selectors/tripsSelectors';
-
-type TripProps = {
-  error: string;
-  image: string;
-  name: string;
-  cost: string;
-  days: number;
-  description: string;
-  country: {
-    name: string;
-    capital: string;
-    population: number;
-    code: string;
-    currencies: Currency[];
-    flag: string;
-  };
-  intro: string;
-};
+import { useSelector } from 'react-redux';
+import { getTripAndCountry } from '../../../redux/selectors/tripsSelectors';
 
 const Trip = () => {
-  if (error) return <NotFound />;
-  else
-    return (
-      <Section>
-        <PageTitle text={name} />
+  const { id } = useParams<{ id: string }>();
+
+  const selectTripAndCountry = useMemo(() => getTripAndCountry(id || ''), [id]);
+
+  const { trip, country } = useSelector(selectTripAndCountry);
+
+  if (!trip) {
+    return <NotFound />;
+  }
+
+  return (
+    <Section>
+      <Container>
+        <PageTitle text={trip.name} />
 
         <DetailsBox>
           <DetailsImage>
-            <SideImage source={image} />
+            <SideImage source={trip.image} />
           </DetailsImage>
 
           <Row>
-            <Col md={12} lg={4}>
-              <div className={styles.intro}>{parser(intro)}</div>
+            <Col md={12} lg={6} className='px-5'>
+              <div className={styles.intro}>{parser(trip.intro)}</div>
               <List variant='light'>
                 <ListItem
-                  title={`<strong>Duration:</strong> ${days} days`}
+                  title={`<strong>Duration:</strong> ${trip.days} days`}
                   icon='calendar-alt'
                 />
                 <ListItem
-                  title={`<strong>Price:</strong> from ${cost}`}
+                  title={`<strong>Price:</strong> from ${trip.cost}`}
                   icon='money-bill-wave'
                 />
               </List>
@@ -65,17 +55,13 @@ const Trip = () => {
         <Row>
           <Col xs={12}>
             <PageTitle text='Trip details' />
-            {parser(description)}
+            {parser(trip.description)}
           </Col>
         </Row>
 
         <PageTitle text={`About ${country.name}`} />
 
         <DetailsBox>
-          <DetailsImage>
-            <SideImage source={country.flag} />
-          </DetailsImage>
-
           <Row>
             <Col md={12} lg={4}>
               <List variant='light'>
@@ -85,20 +71,23 @@ const Trip = () => {
                 />
                 <ListItem
                   title={`<strong>Population:</strong> ${
-                    country.population / 1000000
+                    country.population! / 1000000
                   } millions`}
                   icon='users'
                 />
                 <ListItem
-                  title={`<strong>Currency:</strong> ${country.currencies[0].symbol} (${country.currencies[0].name})`}
+                  title={`<strong>Currency:</strong> ${
+                    country.currencies![0].symbol
+                  } (${country.currencies![0].name})`}
                   icon='money-bill-wave'
                 />
               </List>
             </Col>
           </Row>
         </DetailsBox>
-      </Section>
-    );
+      </Container>
+    </Section>
+  );
 };
 
 export { Trip };

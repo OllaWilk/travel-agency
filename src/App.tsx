@@ -21,7 +21,6 @@ const App = () => {
 
   useEffect(() => {
     const parsedState = parseTrips(tripsList, countriesList);
-
     dispatch(setTrips(tripsList));
     dispatch(setCountries(parsedState.countries));
   }, [dispatch]);
@@ -32,7 +31,7 @@ const App = () => {
         <Routes location={location}>
           <Route path='/' element={<Home />} />
           <Route path='/trips' element={<Trips />} />
-          <Route path='/trips/:id' element={<Trip />} />
+          <Route path='/trip/:id' element={<Trip />} />
           <Route path='/countries' element={<Countries />} />
           <Route path='/countries/:id' element={<Country />} />
           <Route path='/regions' element={<Regions />} />
