@@ -1,9 +1,9 @@
 @use 'sass:color';
-@use '../../../styles/settings.scss' as *';
+@use '../../../styles/settings.scss' as *;
 
 .component {
   display: block;
-  margin-top: ($base-size * 2);
+  margin-top: 2rem;
   color: $color-dark;
   text-decoration: none;
   border: 1px solid color.adjust($color-dark, $lightness: 70%);
@@ -15,14 +15,14 @@
 }
 
 .name {
-  font-size: ($base-size * 2);
-  padding-left: ($base-size * 2);
+  font-size: 2rem;
+  padding-left: 2rem;
   margin: 0;
 }
 
 .region {
   margin: 0;
-  padding-left: ($base-size * 2);
+  padding-left: 2rem;
   color: color.adjust($color-dark, $lightness: 40%);
   font-weight: 400;
   font-style: italic;

@@ -1,18 +1,20 @@
 import React from 'react';
-import { Trip } from 'types/trip-types';
+import { useSelector } from 'react-redux';
+import { TripType } from '../../../types/trip-types';
+
 import { Col, Container, Row } from 'react-bootstrap';
 import { TripSummary } from '../../features/TripSummary/TripSummary';
 import { TripListOptions } from '../../features/TripListOptions/TripListOptions';
 import { Section } from '../../layout/Section/Section';
 
 import { PageTitle } from '../../common/PageTitle/PageTitle';
-import { useSelector } from 'react-redux';
-import { getFilteredTrips } from '../../../redux/tripsReducer';
+import { getAllTrips } from '../../../redux/selectors/tripsSelectors';
 
 const Trips = () => {
-  const trips = useSelector(getFilteredTrips);
+  const trips = useSelector(getAllTrips);
 
   const tags = Array.from(new Set(trips.flatMap((trip) => trip.tags)));
+  /* TO DO */
   const filters = {
     phrase: '',
     duration: { from: 0, to: 14 },
@@ -26,8 +28,8 @@ const Trips = () => {
   return (
     <Section>
       <Container>
-        <Row>
-          <Col md={6}>
+        <Row className='align-items-center justify-content-evenly'>
+          <Col md={12}>
             <PageTitle text='All trips' />
             <TripListOptions
               tags={tags}
@@ -36,7 +38,7 @@ const Trips = () => {
             />
             <Row>
               {trips.length ? (
-                trips.map((trip: Trip) => (
+                trips.map((trip: TripType) => (
                   <TripSummary key={trip.id} {...trip} />
                 ))
               ) : (

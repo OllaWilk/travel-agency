@@ -7,7 +7,7 @@ export interface TripSummaryType {
   tags: string[];
 }
 
-export interface Trip extends TripSummaryType {
+export interface TripType extends TripSummaryType {
   country: {
     name: string;
     code: string;
@@ -15,8 +15,4 @@ export interface Trip extends TripSummaryType {
   address: string;
   intro: string;
   description: string;
-}
-
-export interface TripsType {
-  trips?: Trip[];
 }

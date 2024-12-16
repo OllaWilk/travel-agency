@@ -10,10 +10,11 @@ import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
 import { TripSummary } from '../../features/TripSummary/TripSummary';
 
-import { TripsType } from 'types/trip-types';
 import { CountryType } from 'types/country-types';
+import { Col, Row } from 'react-bootstrap';
 
-type CountryTypeProp = CountryType & TripsType;
+type CountryTypeProp = CountryType;
+
 const Country = ({
   name,
   capital,
