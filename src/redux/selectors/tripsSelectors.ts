@@ -21,8 +21,9 @@ export const getAllTrips = (state: RootState) => state.trips;
 // };
 
 export const getTripById = (state: RootState, tripId: string) => {
-  // TODO - filter trips by tripId
-  console.log('filtering trips by tripId:', tripId);
+  const filtered = state.trips.filter((trip) => trip.id == tripId);
+  console.log('filtering trips by tripId:', tripId, filtered);
+  return filtered.length ? filtered[0] : { error: true };
 };
 
 export const getTripsForCountry = (state: RootState, countryCode: string) => {

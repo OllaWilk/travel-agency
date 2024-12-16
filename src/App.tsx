@@ -8,8 +8,10 @@ import { setCountries } from './redux/slices/countriesSlice';
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Home } from './components/views/Home/Home';
 import { Trips } from './components/views/Trips/Trips';
+import { Trip } from './components/views/Trip/Trip';
 import { Countries } from './components/views/Countries/Countries';
-// TODO - import other views
+import { Country } from './components/views/Country/Country';
+import { Regions } from './components/views/Regions/Regions';
 import { Info } from './components/views/Info/Info';
 import { NotFound } from './components/views/NotFound/NotFound';
 
@@ -27,8 +29,10 @@ const App = () => {
         <Routes location={location}>
           <Route path='/' element={<Home />} />
           <Route path='/trips' element={<Trips />} />
+          <Route path='/trips/:id' element={<Trip />} />
           <Route path='/countries' element={<Countries />} />
-          {/* TODO - add more routes for other views */}
+          <Route path='/countries/:id' element={<Country />} />
+          <Route path='/regions' element={<Regions />} />
           <Route path='/info' element={<Info />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

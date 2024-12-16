@@ -10,9 +10,10 @@ import { DetailsImage } from '../../common/DetailsImage/DetailsImage';
 import { List } from '../../common/List/List';
 import { ListItem } from '../../common/ListItem/ListItem';
 
-import { Trip } from 'types/trip-types';
 import { Currency } from 'types/country-types';
+import { Col, Row } from 'react-bootstrap';
 import styles from './Trip.scss';
+import { getTripById } from '../../../redux/selectors/tripsSelectors';
 
 type TripProps = {
   error: string;
@@ -32,16 +33,7 @@ type TripProps = {
   intro: string;
 };
 
-const Trip = ({
-  error,
-  name,
-  image,
-  cost,
-  days,
-  description,
-  country,
-  intro,
-}: TripProps) => {
+const Trip = () => {
   if (error) return <NotFound />;
   else
     return (
